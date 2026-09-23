@@ -32,6 +32,20 @@ yarn-error.log*
 
 # env files (can opt-in for committing if needed)
 .env*
+!.env.local.example
+
+# Netlify local state
+.netlify/
+
+# Local source assets and superseded high-resolution exports
+/src/assets/
+/public/gallery-cutouts/*.png
+/public/gallery-cutouts/source/
+/public/models/sneaker.glb
+/public/models/dc-nyjah/DC_textures/
+/public/models/dc-nyjah/textures/*.jpeg
+/public/models/adidas-terrex/textures/*.jpg
+/public/models/adidas-terrex/textures/*.jpeg
 
 # vercel
 .vercel

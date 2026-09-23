@@ -1,0 +1,175 @@
+@import "tailwindcss";
+@config "../../tailwind.config.ts";
+
+:root {
+  --background: #f8f5ef;
+  --foreground: #111111;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-body);
+  --font-display: var(--font-display);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  min-height: 100%;
+  background: var(--background);
+  scroll-behavior: auto;
+}
+
+body {
+  min-height: 100%;
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-body), Arial, Helvetica, sans-serif;
+}
+
+::selection {
+  background: #111111;
+  color: #f8f5ef;
+}
+
+.scrollbar-none {
+  scrollbar-width: none;
+}
+
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+
+.cart-button-animation {
+  position: relative;
+  display: inline-block;
+  width: 46px;
+  height: 27px;
+  flex: 0 0 46px;
+}
+
+.cart-button-cart {
+  position: absolute;
+  left: 8px;
+  bottom: 3px;
+  width: 30px;
+  height: 19px;
+  animation: cart-enter 1600ms cubic-bezier(0.22, 0.75, 0.3, 1) both;
+}
+
+.cart-button-handle {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 8px;
+  height: 2px;
+  border-radius: 2px;
+  background: currentColor;
+  transform: rotate(12deg);
+  transform-origin: right center;
+}
+
+.cart-button-basket {
+  position: absolute;
+  left: 5px;
+  top: 3px;
+  width: 23px;
+  height: 11px;
+  border: 2px solid currentColor;
+  border-top-width: 1px;
+  transform: skew(-8deg);
+}
+
+.cart-button-wheel {
+  position: absolute;
+  bottom: 0;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.cart-button-wheel-left {
+  left: 9px;
+}
+
+.cart-button-wheel-right {
+  right: 2px;
+}
+
+.cart-button-box {
+  position: absolute;
+  z-index: 2;
+  left: 22px;
+  top: 0;
+  width: 9px;
+  height: 8px;
+  border: 1.5px solid currentColor;
+  background: #dc3f2c;
+  animation: box-drop 1600ms cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
+@keyframes cart-enter {
+  0% {
+    transform: translateX(-28px);
+    opacity: 0;
+  }
+
+  24%,
+  78% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateX(20px);
+    opacity: 0;
+  }
+}
+
+@keyframes box-drop {
+  0%,
+  24% {
+    transform: translateY(-13px) rotate(-8deg);
+    opacity: 0;
+  }
+
+  38% {
+    opacity: 1;
+  }
+
+  58%,
+  78% {
+    transform: translateY(9px) rotate(0deg);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translate(20px, 9px);
+    opacity: 0;
+  }
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
